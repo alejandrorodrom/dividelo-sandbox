@@ -1,4 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif!important; }
+* { font-family: Roboto, "Helvetica Neue", sans-serif!important; }
+
+.container {
+  margin: 35px 75px;
+}
+
+.slice-payment {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-around;
+  gap: 50px;
+}
+
+.slice-payment__definition {
+  display: flex;
+  flex-direction: column;
+}
+
+.slice-payment__personalization {
+  display: flex;
+  flex-direction: column;
+}
+
+.toggle {
+  margin-bottom: 12px;
+}
+
+.button {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+}
+
+.web-component {
+  margin: 35px 75px;
+}
