@@ -77,8 +77,8 @@ export class VersionTwoComponent {
     if (component == 'home' && this.slicePaymentV2.value['model'] === 'A') webComponent.setAttribute('button-color', this.slicePaymentV2.value['buttonColor']);
 
     webComponent.setAttribute('currency', this.slicePaymentV2.value['currency']);
-    webComponent.setAttribute('medium-brand', this.slicePaymentV2.value['mediumEmphasis']);
-    webComponent.setAttribute('interbank-black', this.slicePaymentV2.value['grayScale']);
+    if (component == 'product' || this.slicePaymentV2.value['model'] === 'A') webComponent.setAttribute('medium-brand', this.slicePaymentV2.value['mediumEmphasis']);
+    if (component == 'product' || this.slicePaymentV2.value['model'] === 'A') webComponent.setAttribute('interbank-black', this.slicePaymentV2.value['grayScale']);
     webComponent.setAttribute('primary', this.slicePaymentV2.value['primaryColor']);
     webComponent.setAttribute('secondary', this.slicePaymentV2.value['secondaryColor']);
     webComponent.setAttribute('accent', this.slicePaymentV2.value['accentColor']);

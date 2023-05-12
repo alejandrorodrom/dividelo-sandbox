@@ -64,8 +64,10 @@
         </mat-form-field>
       </ng-template>
 
-      <mat-slide-toggle class="toggle" formControlName="mediumEmphasis">Énfasis medio</mat-slide-toggle>
-      <mat-slide-toggle class="toggle" formControlName="grayScale">Logo escala grises</mat-slide-toggle>
+      <ng-template [ngIf]="slicePaymentV2.controls['component'].value === 'product' && slicePaymentV2.controls['model'].value === 'A'">
+        <mat-slide-toggle class="toggle" formControlName="mediumEmphasis">Énfasis medio</mat-slide-toggle>
+        <mat-slide-toggle class="toggle" formControlName="grayScale">Logo escala grises</mat-slide-toggle>
+      </ng-template>
     </div>
 
     <div class="slice-payment__personalization">
