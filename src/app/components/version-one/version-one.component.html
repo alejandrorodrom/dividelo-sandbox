@@ -1,5 +1,16 @@
 <div class="container">
   <form class="slice-payment" [formGroup]="slicePaymentV1">
+    <div class="component">
+      <mat-form-field appearance="fill">
+        <mat-label>Componente</mat-label>
+        <mat-select formControlName="component" [errorStateMatcher]="matcher">
+          <mat-option *ngFor="let component of components" [value]="component.value">
+            {{ component.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
     <div class="slice-payment__definition">
       <mat-form-field class="input">
         <mat-label>Subscription Key</mat-label>
@@ -18,31 +29,41 @@
       </mat-form-field>
 
       <mat-form-field class="input">
-        <mat-label>Logo</mat-label>
-        <input type="text" matInput formControlName="logo">
+        <mat-label>Socio</mat-label>
+        <input type="text" matInput formControlName="partner" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="slicePaymentV1.controls['partner'].hasError('required')">
+          El socio es <strong>obligatorio</strong>
+        </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Modelo</mat-label>
-        <mat-select formControlName="model" [errorStateMatcher]="matcher">
-          <mat-option *ngFor="let model of models" [value]="model.value">
-            {{ model.label }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <ng-template [ngIf]="slicePaymentV1.controls['component'].value === 'component'">
+        <mat-form-field class="input">
+          <mat-label>Logo</mat-label>
+          <input type="text" matInput formControlName="logo">
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Moneda</mat-label>
-        <mat-select formControlName="currency" [errorStateMatcher]="matcher">
-          <mat-option *ngFor="let currency of currencies" [value]="currency.value">
-            {{ currency.label }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Modelo</mat-label>
+          <mat-select formControlName="model" [errorStateMatcher]="matcher">
+            <mat-option *ngFor="let model of models" [value]="model.value">
+              {{ model.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-slide-toggle class="toggle" formControlName="mediumEmphasis">Énfasis medio</mat-slide-toggle>
-      <mat-slide-toggle class="toggle" formControlName="minimalEmphasis">Énfasis mínimo</mat-slide-toggle>
-      <mat-slide-toggle class="toggle" formControlName="grayScale">Logo escala grises</mat-slide-toggle>
+        <mat-form-field appearance="fill">
+          <mat-label>Moneda</mat-label>
+          <mat-select formControlName="currency" [errorStateMatcher]="matcher">
+            <mat-option *ngFor="let currency of currencies" [value]="currency.value">
+              {{ currency.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-slide-toggle class="toggle" formControlName="mediumEmphasis">Énfasis medio</mat-slide-toggle>
+        <mat-slide-toggle class="toggle" formControlName="minimalEmphasis">Énfasis mínimo</mat-slide-toggle>
+        <mat-slide-toggle class="toggle" formControlName="grayScale">Logo escala grises</mat-slide-toggle>
+      </ng-template>
     </div>
 
     <div class="slice-payment__personalization">
