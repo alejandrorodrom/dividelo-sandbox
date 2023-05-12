@@ -34,8 +34,6 @@ export class VersionTwoComponent {
 
   matcher = new MyErrorStateMatcher();
 
-  showWebComponent = false;
-
   @ViewChild('webComponent') content!: ElementRef;
 
   constructor(

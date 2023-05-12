@@ -29,8 +29,6 @@ export class VersionOneComponent {
 
   matcher = new MyErrorStateMatcher();
 
-  showWebComponent = false;
-
   @ViewChild('webComponent') content!: ElementRef;
 
   constructor(

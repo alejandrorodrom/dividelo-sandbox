@@ -12,12 +12,14 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatButtonModule } from "@angular/material/button";
+import { PayInThreeComponent } from './components/pay-in-three/pay-in-three.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VersionOneComponent,
-    VersionTwoComponent
+    VersionTwoComponent,
+    PayInThreeComponent
   ],
   imports: [
     BrowserModule,
