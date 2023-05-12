@@ -29,10 +29,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif!important; }
   margin-bottom: 12px;
 }
 
+.component {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+}
+
 .button {
   grid-column-start: 1;
   grid-column-end: 3;
-  grid-row-start: 2;
+  grid-row-start: 3;
 }
 
 .web-component {

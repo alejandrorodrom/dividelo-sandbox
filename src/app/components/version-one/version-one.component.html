@@ -85,6 +85,7 @@
         <input type="text" matInput formControlName="boldTypography" [errorStateMatcher]="matcher">
       </mat-form-field>
     </div>
+
     <button type="button" [disabled]="slicePaymentV1.status === 'INVALID'" class="button" mat-raised-button color="primary" (click)="generateWebComponent()">Crear Web Component</button>
   </form>
 </div>

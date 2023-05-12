@@ -1,1 +1,116 @@
-<p>version-two works!</p>
+<div class="container">
+  <form class="slice-payment" [formGroup]="slicePaymentV2">
+    <div class="component">
+      <mat-form-field appearance="fill">
+        <mat-label>Componente</mat-label>
+        <mat-select formControlName="component" [errorStateMatcher]="matcher">
+          <mat-option *ngFor="let component of components" [value]="component.value">
+            {{ component.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="slice-payment__definition">
+      <mat-form-field class="input">
+        <mat-label>Subscription Key</mat-label>
+        <input type="text" matInput formControlName="subscriptionKey" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="slicePaymentV2.controls['subscriptionKey'].hasError('required')">
+          El subscription key es <strong>obligatorio</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input">
+        <mat-label>Monto</mat-label>
+        <input type="number" matInput formControlName="amount" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="slicePaymentV2.controls['amount'].hasError('required')">
+          El monto es <strong>obligatorio</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input">
+        <mat-label>Logo</mat-label>
+        <input type="text" matInput formControlName="logo">
+      </mat-form-field>
+
+      <ng-template [ngIf]="slicePaymentV2.controls['component'].value === 'home' || slicePaymentV2.controls['component'].value === 'product'">
+        <mat-form-field appearance="fill">
+          <mat-label>Modelo</mat-label>
+          <mat-select formControlName="model" [errorStateMatcher]="matcher">
+            <mat-option *ngFor="let model of models" [value]="model.value">
+              {{ model.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-template>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Moneda</mat-label>
+        <mat-select formControlName="currency" [errorStateMatcher]="matcher">
+          <mat-option *ngFor="let currency of currencies" [value]="currency.value">
+            {{ currency.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <ng-template [ngIf]="slicePaymentV2.controls['component'].value === 'home' && slicePaymentV2.controls['model'].value === 'A'">
+        <mat-form-field appearance="fill">
+          <mat-label>Color de botón</mat-label>
+          <mat-select formControlName="buttonColor" [errorStateMatcher]="matcher">
+            <mat-option *ngFor="let button of buttonColors" [value]="button.value">
+              {{ button.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-template>
+
+      <mat-slide-toggle class="toggle" formControlName="mediumEmphasis">Énfasis medio</mat-slide-toggle>
+      <mat-slide-toggle class="toggle" formControlName="grayScale">Logo escala grises</mat-slide-toggle>
+    </div>
+
+    <div class="slice-payment__personalization">
+      <mat-form-field class="input">
+        <mat-label>Color primario</mat-label>
+        <input type="color" matInput formControlName="primaryColor" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="slicePaymentV2.controls['primaryColor'].hasError('required')">
+          El color primario es <strong>obligatorio</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input">
+        <mat-label>Color secundario</mat-label>
+        <input type="color" matInput formControlName="secondaryColor" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="slicePaymentV2.controls['secondaryColor'].hasError('required')">
+          El color secundario es <strong>obligatorio</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input">
+        <mat-label>Color acento</mat-label>
+        <input type="color" matInput formControlName="accentColor" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="slicePaymentV2.controls['accentColor'].hasError('required')">
+          El color acento es <strong>obligatorio</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input">
+        <mat-label>Nombre de la tipografía regular</mat-label>
+        <input type="text" matInput formControlName="regularTypography" [errorStateMatcher]="matcher">
+      </mat-form-field>
+
+      <mat-form-field class="input">
+        <mat-label>Nombre de la tipografía media</mat-label>
+        <input type="text" matInput formControlName="mediumTypography" [errorStateMatcher]="matcher">
+      </mat-form-field>
+
+      <mat-form-field class="input">
+        <mat-label>Nombre de la tipografía negrilla</mat-label>
+        <input type="text" matInput formControlName="boldTypography" [errorStateMatcher]="matcher">
+      </mat-form-field>
+    </div>
+
+    <button type="button" [disabled]="slicePaymentV2.status === 'INVALID'" class="button" mat-raised-button color="primary" (click)="generateWebComponent()">Crear Web Component</button>
+  </form>
+</div>
+
+<div #webComponent class="web-component"></div>
